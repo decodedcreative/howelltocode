@@ -1,0 +1,2 @@
+/* Minimal CSS – use this in preview.ts to test if the 500 is from Tailwind/tokens */
+body { margin: 0; font-family: system-ui, sans-serif; }

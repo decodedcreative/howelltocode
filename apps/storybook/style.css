@@ -1,0 +1,5 @@
+/* Use relative path so Vite can resolve tokens CSS without package resolution issues */
+@import "../../packages/tokens/dist/css/tokens.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
