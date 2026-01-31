@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useGetClassNames } from '../../hooks';
+import { useGetClassNames } from "@hooks";
 import { buttonStyles } from './Button.styles';
 
 export type ButtonProps = Omit<
@@ -12,13 +12,13 @@ export type ButtonProps = Omit<
   variant?: 'primary' | 'secondary' | 'outline';
 };
 
-export function Button({
+export const Button = ({
   variant = 'primary',
   size = 'md',
-  classNameOverrides,
+  classNameOverrides = undefined,
   children,
   ...props
-}: ButtonProps) {
+}: ButtonProps) => {
   const classNames = useGetClassNames(buttonStyles, classNameOverrides, {
     component: { variant, size },
   });
@@ -29,3 +29,5 @@ export function Button({
     </button>
   );
 }
+
+Button.displayName = 'DS_Button';

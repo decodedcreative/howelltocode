@@ -1,28 +1,31 @@
 import * as React from "react";
-import { useGetClassNames } from "../../hooks";
+import { useGetClassNames } from "@hooks";
 import { textStyles } from "./Text.styles";
 
-export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
+export type TextProps = Omit<
+  React.HTMLAttributes<HTMLParagraphElement>,
+  "children"
+> & {
   as?: "p" | "span";
   children: React.ReactNode;
   classNameOverrides?: Record<string, string[]>;
   muted?: boolean;
   size?: "xs" | "sm" | "base" | "lg";
   weight?: "normal" | "medium" | "semibold" | "bold";
-}
+};
 
-export function Text({
+export const Text = ({
   as: Component = "p",
   size = "base",
   weight = "normal",
   muted = false,
-  classNameOverrides,
+  classNameOverrides = undefined,
   children,
   ...props
-}: TextProps) {
+}: TextProps) => {
   const classNames = useGetClassNames(
     textStyles,
-    classNameOverrides,
+    classNameOverrides ?? {},
     { component: { size, weight, muted } }
   );
 
@@ -32,3 +35,5 @@ export function Text({
     </Component>
   );
 }
+
+Text.displayName = 'DS_Text';
